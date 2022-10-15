@@ -11,4 +11,5 @@ module.exports = {
     },
     plugins: ['sonar'],
     rules: {},
+    ignorePatterns: ['**/functions/api/*.js'],
 }
