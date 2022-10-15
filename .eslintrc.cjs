@@ -6,10 +6,12 @@ module.exports = {
     extends: ['standard', 'plugin:sonar/recommended', 'eslint-config-prettier'],
     overrides: [],
     parserOptions: {
-        ecmaVersion: 6,
+        ecmaVersion: 'latest',
         sourceType: 'module',
     },
     plugins: ['sonar'],
+    globals: {
+        Response: 'readonly',
+    },
     rules: {},
-    ignorePatterns: ['**/functions/api/*.js'],
 }
