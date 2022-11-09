@@ -3,11 +3,11 @@ import { Router } from '../lib/router'
 const router = new Router()
 
 router.get('/', (req, res) => {
-    return new Response(JSON.stringify({message: 'Get'}))
+    return new Response(JSON.stringify({ message: 'Get' }))
 })
 
 router.post('/', (req, res) => {
-    return new Response(JSON.stringify({message: 'Post'}))
+    return new Response(JSON.stringify({ message: 'Post' }))
 })
 
 export async function onRequest(context) {
