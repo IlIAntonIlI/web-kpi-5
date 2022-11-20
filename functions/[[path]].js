@@ -2,15 +2,25 @@ import { Router } from '../lib/router'
 
 const router = new Router()
 
-router.get('/', (req, res) => {
-    return new Response(JSON.stringify({ message: 'Get' }))
+router.get('/', (req, res, payload) => {
+    return new Response(JSON.stringify({ message: payload }))
 })
 
-router.post('/', (req, res) => {
-    return new Response(JSON.stringify({ message: 'Post' }))
+router.post('/', (req, res, payload) => {
+    return new Response(JSON.stringify({ message: payload }))
 })
 
 export async function onRequest(context) {
     const { request } = context
-    return router.handle(request, new Response())
+    try {
+        return router.handle(request, new Response())
+    } catch (error) {
+        return new Response(
+            process.env.NODE_ENV === 'production' ? 'Internal error' : error,
+            {
+                status: 500,
+                statusText: 'Internal server error',
+            }
+        )
+    }
 }
